@@ -45,6 +45,7 @@ public class Main {
 
           @Override
           public void cancel() {
+            // This is never executed when connection is closed prematirelly
             System.out.println("cancel");
           }
         };
