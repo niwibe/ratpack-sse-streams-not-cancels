@@ -17,7 +17,7 @@ public class Main {
       .handlers(chain -> chain
         .get(ctx -> {
           List<String> messages = Arrays.asList("Hello", "World!", "How", "Are", "You");
-          Publisher<String> p1 = new AsyncIterablePublisher<>(messages);
+          Publisher<String> p1 = new AsyncIterablePublisher<>(messages, ctx.getExecution().getEventLoop());
           Publisher<ByteBuf> p2 = Streams.map(p1, input -> Unpooled.wrappedBuffer(input.getBytes(StandardCharsets.UTF_8)));
           ctx.getResponse().sendStream(ctx.stream(p2));
         })
