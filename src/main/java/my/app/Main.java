@@ -29,7 +29,7 @@ public class Main {
         });
 
       Response response = context.getResponse();
-      response.sendStream(p2);
+      response.sendStream(context.stream(p2));
     }
   }
 
